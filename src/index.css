@@ -1,4 +1,4 @@
-body {
+body, html {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,4 +20,17 @@ body {
 }
 .champion-name {
   color: white;
+}
+
+.header {
+  text-align: center;
+  background-color: rgb(20, 2, 2);
+}
+h1 {
+  color: white;
+  margin: 0;
+}
+body, .root {
+  min-height: 100vh;
+  background-color: tomato;
 }

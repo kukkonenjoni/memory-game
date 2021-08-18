@@ -9,7 +9,9 @@ class App extends React.Component {
         curr_field: "",
         gamestate: true,
         count: 0,
-        multiplier: 4
+        multiplier: 4,
+        points: 0,
+        highScore: 0
       }
       this.randomChamps = this.randomChamps.bind(this)
       this.updateField = this.updateField.bind(this)
@@ -41,11 +43,13 @@ class App extends React.Component {
     let new_arr = all_champs.slice()
     if (new_arr[index][2] == true) {
       this.setState({gamestate: false})
+      this.setState({points: 0})
     }
     else {
       new_arr[index][2] = true
       this.setState({curr_field: new_arr})
       this.setState(prevState => ({count: prevState.count +1}))
+      this.setState(prevState=> ({points: prevState.points+1}))
     }
     if (this.state.count > this.state.multiplier - 2) {
       this.setState({curr_field: ""})
@@ -70,9 +74,15 @@ class App extends React.Component {
       display = <h1>Loading.....</h1>
     }
     return(
-      <div>
-        <h1>Hello World!</h1>
+      <div className="container">
+        <div className="header">
+          <h1>Memory Game</h1>
+          <h1>Points: {this.state.points}</h1>
+        </div>
         {display}
+        <div className="header">
+          <h1>How To Play</h1>
+        </div>
       </div>
     )
   }
