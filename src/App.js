@@ -67,7 +67,7 @@ class App extends React.Component {
     else if (this.state.curr_field === "" && this.state.champions.length === 145) {
       this.randomChamps()
     }
-    else if (this.state.champions.length === 145 && this.state.curr_field !== "") {
+    else if (this.state.champions.length >= 145 && this.state.curr_field !== "") {
       display = <RenderChamps value={this.state.curr_field} btn={this.updateField}/>
     }
     else {
