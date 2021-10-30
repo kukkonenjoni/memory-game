@@ -22,13 +22,12 @@ class App extends React.Component {
       let champ = [data[champion].id, data[champion].image.full]
       empty.push(champ)
     }
+    console.log(empty)
     this.setState({champions: empty})
   }
   componentDidMount() {
     fetch("http://ddragon.leagueoflegends.com/cdn/9.18.1/data/en_US/champion.json")
-    .then(response => response.json())
-    .then(data => data.data)
-    .then(data => this.populateChampion(data))
+    .then(response => response.json()).then(data => data.data).then(data => this.populateChampion(data))
   }
   randomChamps() {
     let empty = []
@@ -64,14 +63,14 @@ class App extends React.Component {
     if (this.state.gamestate == false) {
       display = <h1>You Lost</h1>
     }
-    else if (this.state.curr_field === "" && this.state.champions.length === 145) {
+    else if (this.state.curr_field === "" && this.state.champions.length > 100) {
       this.randomChamps()
     }
-    else if (this.state.champions.length >= 145 && this.state.curr_field !== "") {
+    else if (this.state.champions.length > 140 && this.state.curr_field !== "") {
       display = <RenderChamps value={this.state.curr_field} btn={this.updateField}/>
     }
     else {
-      display = <h1>{this.state.champions}</h1>
+      display = <h1>{console.log(this.state.champions)}</h1>
     }
     return(
       <div className="container">
