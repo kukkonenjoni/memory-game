@@ -2,7 +2,7 @@ import { useState } from "react"
 
 function RenderChamps(props) {
     
-    const [champions, setChampions] = useState(props.value)
+    const [champions] = useState(props.value)
     const shuffle = (champions) => {
         let shuffled = champions.sort((a,b) => 0.5-Math.random())
         return shuffled

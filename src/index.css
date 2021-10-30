@@ -34,3 +34,6 @@ body, .root {
   min-height: 100vh;
   background-color: tomato;
 }
+p { 
+  color: white;
+}

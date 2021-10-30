@@ -30,11 +30,17 @@ class App extends React.Component {
     .then(response => response.json()).then(data => data.data).then(data => this.populateChampion(data))
   }
   randomChamps() {
+    let nums = []
     let empty = []
     for (let i = 1; i <= this.state.multiplier; i++) {
       let random = Math.floor(Math.random() * 145);
-      let new_arr = this.state.champions[random].slice(0,2)
-      empty.push(new_arr)
+      if (nums.includes(random)) {
+        i--
+      } else {
+        let new_arr = this.state.champions[random].slice(0,2)
+        empty.push(new_arr)
+        nums.push(random)
+      }
     }
     this.setState({curr_field: empty})
   }
@@ -70,7 +76,7 @@ class App extends React.Component {
       display = <RenderChamps value={this.state.curr_field} btn={this.updateField}/>
     }
     else {
-      display = <h1>{console.log(this.state.champions)}</h1>
+      display = <h1>Loading....</h1>
     }
     return(
       <div className="container">
@@ -81,6 +87,11 @@ class App extends React.Component {
         {display}
         <div className="header">
           <h1>How To Play</h1>
+          <p>1. Click champion once</p>
+          <p>2. After click, icons may or may not change position</p>
+          <p>3. After clicking one champion click next one until all champions have been clicked </p>
+          <p>4. After finishing round 1, more and different champions appear</p>
+          <p>5. Play for aslong as you can</p>
         </div>
       </div>
     )
