@@ -71,7 +71,7 @@ class App extends React.Component {
       display = <RenderChamps value={this.state.curr_field} btn={this.updateField}/>
     }
     else {
-      display = <h1>Loading.....</h1>
+      display = <h1>{this.state.champions}</h1>
     }
     return(
       <div className="container">
